@@ -5,26 +5,20 @@
   "esy": {
     "build": "refmterr dune build -p  transparency",
     "buildDev": "pesy",
-    "release": {
-      "releasedBinaries": [
-        "TransparencyApp.exe"
-      ]
-    }
+    "release": { "releasedBinaries": [ "TransparencyApp.exe" ] }
   },
   "buildDirs": {
     "executable": {
       "require": [
-        "lambdasoup",
-        "cohttp",
-        "cohttp-lwt",
-        "cohttp-lwt-unix",
+        "lambdasoup", 
+        "cohttp", 
+        "cohttp-lwt", 
+        "cohttp-lwt-unix", 
         "lwt",
-        "lwt_ppx"
+        "lwt_ppx",
+        "pastel.lib"
       ],
-      "preprocess": [
-        "pps",
-        "lwt_ppx"
-      ],
+      "preprocess": [ "pps", "lwt_ppx" ],
       "main": "TransparencyApp",
       "name": "TransparencyApp.exe"
     }
@@ -41,6 +35,7 @@
     "@opam/lambdasoup": "*",
     "@opam/lwt": "~4.5.0",
     "@opam/lwt_ppx": "~1.2.4",
+    "@reason-native/pastel": "^0.2.3",
     "ocaml": "~4.8.1000"
   },
   "devDependencies": {

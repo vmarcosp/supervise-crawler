@@ -30,6 +30,7 @@ let startCrawler = response => {
     |>Base.Option.value(~default="")
 
   print_endline(nodeValue)
+
   return()
 }
 

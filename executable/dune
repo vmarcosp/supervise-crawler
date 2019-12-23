@@ -7,6 +7,6 @@
    (name TransparencyApp)  ;  From package.json main field
    ; The name of the executable (runnable via esy x TransparencyApp.exe) 
    (public_name TransparencyApp.exe)  ;  From package.json name field
-   (libraries  lambdasoup cohttp cohttp-lwt cohttp-lwt-unix lwt lwt_ppx ) ;  From package.json require field (array of strings)
+   (libraries  lambdasoup cohttp cohttp-lwt cohttp-lwt-unix lwt lwt_ppx pastel.lib ) ;  From package.json require field (array of strings)
    (preprocess ( pps lwt_ppx ))  ; From package.json preprocess field
 )

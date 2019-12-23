@@ -1,5 +1,5 @@
 {
-  "checksum": "6e72faa3a24ce7853bcfa4b929d964e4",
+  "checksum": "7cdcb6d1700e6a06f1a274b7d9293443",
   "root": "transparency@link-dev:./package.json",
   "node": {
     "transparency@link-dev:./package.json": {
@@ -13,8 +13,8 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@4.7.1004@d41d8cd9", "@opam/lwt_ppx@opam:1.2.4@369f3faf",
-        "@opam/lwt@opam:4.5.0@677655b4",
+        "ocaml@4.7.1004@d41d8cd9", "@reason-native/pastel@0.2.3@d41d8cd9",
+        "@opam/lwt_ppx@opam:1.2.4@369f3faf", "@opam/lwt@opam:4.5.0@677655b4",
         "@opam/lambdasoup@opam:0.6.4@cf8a508f",
         "@opam/dune@opam:1.11.4@a7ccb7ae",
         "@opam/cohttp-lwt-unix@opam:2.5.0@df4c7548",
