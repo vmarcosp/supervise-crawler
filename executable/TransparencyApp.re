@@ -3,42 +3,42 @@ open Lwt;
 open Lwt.Infix;
 open Soup;
 
-let tableSelector = ".tableDados>tbody>tr>td>a"
+let table_selector = ".tableDados > tbody > tr > td > a"
 
-let makeRequest = url => 
+let make_request = url => 
   url
   |>Uri.of_string
   |>Client.get
 
-let getFinalUrl = response =>
+let get_final_url = response =>
     Cohttp.(
       response
         |> Response.headers
         |> headers => Header.get(headers, "location")
         |> Base.Option.value(~default="")
-        |> finalUrl => Url.baseUrl++finalUrl 
+        |> url => Url.base_url ++ url 
     )
 
-let startCrawler = response => { 
-  let%lwt (_, body) = response|>getFinalUrl|>makeRequest
-  let%lwt parsedBody = Cohttp_lwt.Body.to_string(body)
+let start_crawler = response => { 
+  let%lwt (_, body) = response|>get_final_url|>make_request
+  let%lwt parsed_body = Cohttp_lwt.Body.to_string(body)
 
-  let nodeValue = parsedBody
-    |>parse
-    $ tableSelector
-    |>leaf_text
-    |>Base.Option.value(~default="")
+  let node = parsed_body
+    |> parse
+    $  table_selector
+    |> leaf_text
+    |> Base.Option.value(~default="")
 
-  print_endline(nodeValue)
+  print_endline(node)
 
   return()
 }
 
 let main = {
-  let url = Url.createUrl(10, 2018)
-  let%lwt (response,_) = makeRequest(url)
+  let url = Url.create_url(10, 2018)
+  let%lwt (response,_) = make_request(url)
 
-  startCrawler(response)
+  start_crawler(response)
 }
 
 Lwt_main.run(main) |> ignore
