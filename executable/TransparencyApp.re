@@ -1,7 +1,7 @@
-open Cohttp_lwt_unix
-open Lwt
-open Lwt.Infix
-open Soup
+open Cohttp_lwt_unix;
+open Lwt;
+open Lwt.Infix;
+open Soup;
 
 let tableSelector = ".tableDados>tbody>tr>td>a"
 
