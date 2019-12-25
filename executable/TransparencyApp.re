@@ -1,5 +1,6 @@
 open Cohttp_lwt_unix
 open Lwt
+open Types
 
 let get_final_url = response =>
       response
