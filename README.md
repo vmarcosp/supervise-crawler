@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://fw7.com.br/">
-    <img src="https://github.com/fw7-solucoes/fullstack-challenge/blob/master/assets/logo.svg" />
+    <img src="https://github.com/vmarcosp/supervise-crawler/blob/master/assets/logo.svg" />
   </a>
 </p>
 
