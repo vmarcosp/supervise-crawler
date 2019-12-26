@@ -11,7 +11,7 @@
     "executable": {
       "require": [
         "lambdasoup", "cohttp", "cohttp-lwt", "cohttp-lwt-unix", "lwt",
-        "lwt_ppx", "pastel.lib", "console.lib"
+        "lwt_ppx", "pastel.lib", "console.lib", "yojson"
       ],
       "preprocess": [ "pps", "lwt_ppx" ],
       "main": "TransparencyApp",
@@ -31,6 +31,7 @@
     "@opam/lambdasoup": "*",
     "@opam/lwt": "~4.5.0",
     "@opam/lwt_ppx": "~1.2.4",
+    "@opam/yojson": "1.7.0",
     "@reason-native/console": "^0.1.0",
     "@reason-native/pastel": "^0.2.3",
     "ocaml": "~4.8.1000"

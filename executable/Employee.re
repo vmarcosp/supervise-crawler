@@ -3,6 +3,7 @@ open Optional
 open Base
 open Selectors
 open EmployeeTypes
+open Yojson.Basic.Util
 
 let to_href_list = list => List.map(list, node => 
   attribute("href", node) 
@@ -16,11 +17,11 @@ let get_value = node =>
     |> Stdlib.String.trim
 
 let field_of_node = item => {
-  let node = item $$ "td" |> to_list
+  let node = item $$ "td" |> Soup.to_list
 
   switch node {
-    | [first, second] => (get_value(first), get_value(second))
-    | _ => ("label:empty", "value:empty")
+    | [first, second] => (get_value(first), `String(get_value(second)))
+    | _ => ("label:empty", `String("value:empty"))
   }
 }
 
@@ -30,7 +31,7 @@ let get_column = (selector, node) =>
   node 
     |> parse
     $$ selector
-    |> to_list
+    |> Soup.to_list
     |> nodes_to_field
 
 let get_left_column = get_column(left_column_selector)
@@ -41,12 +42,12 @@ let create_employee = link => {
   let%lwt (_, body) = HttpUtils.make_request(link)
   let%lwt node = HttpUtils.body_to_string(body)
   
-  let data = {
-    leftColumn: get_left_column(node),
-    rightColumn: get_right_column(node)
-  }
+  let leftColumn = get_left_column(node)
+  let rightColumn = get_right_column(node)
+  
+  let employee = `Assoc(List.concat([leftColumn, rightColumn]))
 
-  Lwt.return(data)
+  Lwt.return(employee)
 }
 
 let get_data = body => {
@@ -54,16 +55,22 @@ let get_data = body => {
   let links = body
     |> parse 
     $$ table_selector
-    |> to_list
+    |> Soup.to_list
     |> to_href_list
 
   let list = List.map(links, create_employee)
+  let all = List.map(list, item => {
+    let%lwt something = item
+    let result = Yojson.Safe.to_string(something)
+    Console.log("-----ITEM------")
+    Console.log(result)
+    Console.log("-----END:ITEM------")
+    Lwt.return("")
+  })
+  
+  let%lwt something = List.last(all) @?> Lwt.return("")
 
-  Lwt_list.iter_p(item => {
-    let%lwt { leftColumn, rightColumn } = item
+  Stdlib.print_endline(something)
 
-    Console.log(leftColumn)
-    
-    Lwt.return()
-  }, list)
+  Lwt.return()
 }

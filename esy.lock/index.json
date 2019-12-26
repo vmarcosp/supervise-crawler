@@ -1,5 +1,5 @@
 {
-  "checksum": "407d7f3c29276a1e709c659cc6ccbbd2",
+  "checksum": "9060432bd3c67088f3f46c9edbbad312",
   "root": "transparency@link-dev:./package.json",
   "node": {
     "transparency@link-dev:./package.json": {
@@ -15,6 +15,7 @@
       "dependencies": [
         "ocaml@4.7.1004@d41d8cd9", "@reason-native/pastel@0.2.3@d41d8cd9",
         "@reason-native/console@0.1.0@d41d8cd9",
+        "@opam/yojson@opam:1.7.0@7056d985",
         "@opam/lwt_ppx@opam:1.2.4@369f3faf", "@opam/lwt@opam:4.5.0@677655b4",
         "@opam/lambdasoup@opam:0.6.4@cf8a508f",
         "@opam/dune@opam:1.11.4@a7ccb7ae",
