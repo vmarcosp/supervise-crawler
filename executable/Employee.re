@@ -59,18 +59,6 @@ let get_data = body => {
     |> to_href_list
 
   let list = List.map(links, create_employee)
-  let all = List.map(list, item => {
-    let%lwt something = item
-    let result = Yojson.Safe.to_string(something)
-    Console.log("-----ITEM------")
-    Console.log(result)
-    Console.log("-----END:ITEM------")
-    Lwt.return("")
-  })
-  
-  let%lwt something = List.last(all) @?> Lwt.return("")
 
-  Stdlib.print_endline(something)
-
-  Lwt.return()
+  Lwt.return(list)
 }
