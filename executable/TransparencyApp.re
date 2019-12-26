@@ -24,6 +24,7 @@ let start_crawler = response => {
 
 let main = {
   let url = Url.create_url(10, 2018)
+  Console.log(url)
   let%lwt (response,_) = HttpUtils.make_request(url)
 
   start_crawler(response)
