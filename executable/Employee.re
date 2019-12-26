@@ -4,12 +4,11 @@ open Base
 open Selectors
 open EmployeeTypes
 
-let href_of_node = node => 
+let to_href_list = list => List.map(list, node => 
   attribute("href", node) 
     @?> ""
     |> Url.with_suffix
-
-let to_href_list = list => List.map(list, href_of_node)
+)
 
 let get_value = node => 
   leaf_text(node) 
@@ -59,13 +58,12 @@ let get_data = body => {
     |> to_href_list
 
   let list = List.map(links, create_employee)
-  
-  let%lwt last = List.last(list) @?> Lwt.return({
-    leftColumn: [("", "")],
-    rightColumn: [("", "")]
-  })
 
-  Console.log(list)
+  Lwt_list.iter_p(item => {
+    let%lwt { leftColumn, rightColumn } = item
 
-  Lwt.return(list)
+    Console.log(leftColumn)
+    
+    Lwt.return()
+  }, list)
 }
