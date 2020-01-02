@@ -2,7 +2,6 @@ open Soup
 open Optional
 open Base
 open Selectors
-open EmployeeTypes
 open Yojson.Basic.Util
 
 let to_href_list = list =>
