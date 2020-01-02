@@ -8,7 +8,7 @@
     "release": { "releasedBinaries": [ "App.exe" ] }
   },
   "buildDirs": {
-    "executable": {
+    "src": {
       "require": [
         "lambdasoup", "cohttp", "cohttp-lwt", "cohttp-lwt-unix", "lwt",
         "lwt_ppx", "pastel.lib", "console.lib", "yojson"
