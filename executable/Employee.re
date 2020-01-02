@@ -6,8 +6,11 @@ open EmployeeTypes
 open Yojson.Basic.Util
 
 let to_href_list = list =>
-  List.map(list, node => attribute("href", node) @?> "" 
-    |> Url.with_suffix)
+  List.map(list, node => 
+    attribute("href", node)   
+      @?> "" 
+      |> Url.with_suffix
+  )
 
 let get_value = node => leaf_text(node) 
   @?> "" 
@@ -37,14 +40,6 @@ let get_right_column = get_column(right_column_selector)
 let create_employee = link => {
   let%lwt (response, body) = HttpUtils.make_request(link)
     
-  let status = Cohttp.Response.status(response)
-
-  Console.log(switch status {
-  | `OK => "ok"
-  | `Forbidden => "forbidden"
-  | _ => "unkown"
-  })
-
   let%lwt parsedBody = HttpUtils.body_to_string(body)
   let soup = parsedBody 
     |> parse
@@ -81,6 +76,8 @@ let create_employee = link => {
       right_column, 
       [("discounts", `List(discounts))] 
     ])
+  
+  Console.log(`Assoc(employee) |> Yojson.pretty_to_string)
 
   Lwt.return(`Assoc(employee))
 }
@@ -95,7 +92,5 @@ let get_data = body => {
   let all = Lwt_list.map_p(item => item, list)
   let%lwt solved = all
   
-  Console.log(`List(solved) |> Yojson.pretty_to_string)
-  
-  Lwt.return(all)
+  Lwt.return(list)
 }
