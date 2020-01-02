@@ -1,11 +1,11 @@
 {
-  "name": "transparency",
+  "name": "supervise-crawler",
   "version": "0.0.0",
   "description": "My Project",
   "esy": {
-    "build": "refmterr dune build -p  transparency",
+    "build": "refmterr dune build -p supervise-crawler",
     "buildDev": "pesy",
-    "release": { "releasedBinaries": [ "TransparencyApp.exe" ] }
+    "release": { "releasedBinaries": [ "App.exe" ] }
   },
   "buildDirs": {
     "executable": {
@@ -14,13 +14,12 @@
         "lwt_ppx", "pastel.lib", "console.lib", "yojson"
       ],
       "preprocess": [ "pps", "lwt_ppx" ],
-      "main": "TransparencyApp",
-      "name": "TransparencyApp.exe"
+      "main": "Index",
+      "name": "App.exe"
     }
   },
   "scripts": {
-    "pesy": "bash -c 'env PESY_MODE=update pesy'",
-    "test": "esy x TestTransparency.exe"
+    "pesy": "bash -c 'env PESY_MODE=update pesy'"
   },
   "dependencies": {
     "@esy-ocaml/reason": "*",
