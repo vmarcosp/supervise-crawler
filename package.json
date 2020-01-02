@@ -1,7 +1,7 @@
 {
   "name": "supervise-crawler",
   "version": "0.0.0",
-  "description": "My Project",
+  "description": "Supervise crawler",
   "esy": {
     "build": "refmterr dune build -p supervise-crawler",
     "buildDev": "pesy",
