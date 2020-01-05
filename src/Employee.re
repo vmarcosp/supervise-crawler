@@ -4,6 +4,8 @@ open Base
 open Selectors
 open Yojson.Basic.Util
 
+let default_employee = Lwt.return(`Assoc([("", `String(""))]))
+
 let to_href_list = list =>
   List.map(list, node => 
     attribute("href", node)   
@@ -62,7 +64,7 @@ let create_employee = link => {
             ("earning", `String(get_value(earning))),
             ("discount", `String(get_value(discount))),
           ])
-        | _ => `Assoc([("s", `String(""))])
+        | _ => `Assoc([("", `String(""))])
         }
       },
     )
@@ -76,8 +78,6 @@ let create_employee = link => {
       [("discounts", `List(discounts))] 
     ])
   
-  Console.log(`Assoc(employee) |> Yojson.pretty_to_string)
-
   Lwt.return(`Assoc(employee))
 }
 
@@ -88,8 +88,9 @@ let get_data = body => {
     |> to_href_list
 
   let list = List.map(links, create_employee)
-  let all = Lwt_list.map_p(item => item, list)
-  let%lwt solved = all
+  let%lwt last = List.last(list) @?> default_employee
   
+  Console.log(last |> Yojson.to_string)
+
   Lwt.return(list)
 }

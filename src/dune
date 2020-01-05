@@ -10,3 +10,4 @@
    (libraries  lambdasoup cohttp cohttp-lwt cohttp-lwt-unix lwt lwt_ppx pastel.lib console.lib yojson ) ;  From package.json require field (array of strings)
    (preprocess ( pps lwt_ppx ))  ; From package.json preprocess field
 )
+(include_subdirs unqualified) ;  From package.json includeSubdirs field
