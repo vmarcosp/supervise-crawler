@@ -38,37 +38,36 @@ let get_left_column = get_column(left_column_selector)
 
 let get_right_column = get_column(right_column_selector)
 
+let create_discounts = row => {
+  let value = row 
+    $$ "td" 
+    |> Soup.to_list
+
+  switch (value) {
+  | [code, description, reference, earning, discount] =>
+    `Assoc([
+      ("code", `String(get_value(code))),
+      ("description", `String(get_value(description))),
+      ("reference", `String(get_value(reference))),
+      ("earning", `String(get_value(earning))),
+      ("discount", `String(get_value(discount))),
+    ])
+  | _ => `Assoc([("", `String(""))])
+  }
+}
+
 let create_employee = link => {
   let%lwt (response, body) = HttpUtils.make_request(link)
     
   let%lwt parsedBody = HttpUtils.body_to_string(body)
-  let soup = parsedBody 
-    |> parse
 
-  let rows = soup $$ ".tableDados > tbody > tr" 
+  let soup = parsedBody|>parse
+
+  let discounts = soup
+    $$ ".tableDados > tbody > tr" 
     |> Soup.to_list
-
-  let discounts =
-    List.map(
-      rows,
-      row => {
-        let value = row $$ "td" 
-        |> Soup.to_list
-
-        switch (value) {
-        | [code, description, reference, earning, discount] =>
-          `Assoc([
-            ("code", `String(get_value(code))),
-            ("description", `String(get_value(description))),
-            ("reference", `String(get_value(reference))),
-            ("earning", `String(get_value(earning))),
-            ("discount", `String(get_value(discount))),
-          ])
-        | _ => `Assoc([("", `String(""))])
-        }
-      },
-    )
-
+    |> rows => List.map(rows, create_discounts)
+  
   let left_column = get_left_column(soup)
   let right_column = get_right_column(soup)
 
@@ -77,7 +76,9 @@ let create_employee = link => {
       right_column, 
       [("discounts", `List(discounts))] 
     ])
-  
+
+  Console.log(`Assoc(employee) |> Yojson.pretty_to_string)
+
   Lwt.return(`Assoc(employee))
 }
 
@@ -90,7 +91,5 @@ let get_data = body => {
   let list = List.map(links, create_employee)
   let%lwt last = List.last(list) @?> default_employee
   
-  Console.log(last |> Yojson.to_string)
-
   Lwt.return(list)
 }

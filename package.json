@@ -17,19 +17,11 @@
       "preprocess": [ "pps", "lwt_ppx" ],
       "main": "Index",
       "name": "App.exe"
-    },
-    "test": {
-      "require":[
-        "rely.lib"
-      ],
-      "name": "AppTests.exe",
-      "main": "RunTests"
     }
   },
   "scripts": { 
     "pesy": "bash -c 'env PESY_MODE=update pesy'",
-    "start": "esy x App.exe",
-    "tests": "esy x AppTests.exe"
+    "start": "esy x App.exe"
   },
   "dependencies": {
     "@esy-ocaml/reason": "*",
