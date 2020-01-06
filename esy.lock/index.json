@@ -1,5 +1,5 @@
 {
-  "checksum": "39cef4c8e98f730a57a54bb81aa92f13",
+  "checksum": "60464be1dbecd338dc4c7698dfa01a42",
   "root": "supervise-crawler@link-dev:./package.json",
   "node": {
     "supervise-crawler@link-dev:./package.json": {
@@ -13,7 +13,8 @@
       },
       "overrides": [],
       "dependencies": [
-        "ocaml@4.7.1004@d41d8cd9", "@reason-native/pastel@0.2.3@d41d8cd9",
+        "ocaml@4.7.1004@d41d8cd9", "@reason-native/rely@3.1.0@d41d8cd9",
+        "@reason-native/pastel@0.2.3@d41d8cd9",
         "@reason-native/console@0.1.0@d41d8cd9",
         "@opam/yojson@opam:1.7.0@7056d985",
         "@opam/lwt_ppx@opam:1.2.4@369f3faf", "@opam/lwt@opam:5.1.0@e9f9e9f8",
@@ -77,6 +78,26 @@
       "dependencies": [],
       "devDependencies": []
     },
+    "@reason-native/rely@3.1.0@d41d8cd9": {
+      "id": "@reason-native/rely@3.1.0@d41d8cd9",
+      "name": "@reason-native/rely",
+      "version": "3.1.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://registry.npmjs.org/@reason-native/rely/-/rely-3.1.0.tgz#sha1:4f59906dc7c18ba86c998e44d6463b6be866dfc6"
+        ]
+      },
+      "overrides": [],
+      "dependencies": [
+        "refmterr@3.3.0@d41d8cd9", "ocaml@4.7.1004@d41d8cd9",
+        "@reason-native/pastel@0.2.3@d41d8cd9",
+        "@reason-native/file-context-printer@0.0.3@d41d8cd9",
+        "@opam/re@opam:1.9.0@d4d5e13d", "@opam/junit@opam:2.0.1@1b4d302c",
+        "@opam/dune@opam:1.11.4@a7ccb7ae", "@esy-ocaml/reason@3.5.2@d41d8cd9"
+      ],
+      "devDependencies": []
+    },
     "@reason-native/pastel@0.2.3@d41d8cd9": {
       "id": "@reason-native/pastel@0.2.3@d41d8cd9",
       "name": "@reason-native/pastel",
@@ -91,6 +112,24 @@
       "dependencies": [
         "ocaml@4.7.1004@d41d8cd9", "@opam/re@opam:1.9.0@d4d5e13d",
         "@opam/dune@opam:1.11.4@a7ccb7ae", "@esy-ocaml/reason@3.5.2@d41d8cd9"
+      ],
+      "devDependencies": []
+    },
+    "@reason-native/file-context-printer@0.0.3@d41d8cd9": {
+      "id": "@reason-native/file-context-printer@0.0.3@d41d8cd9",
+      "name": "@reason-native/file-context-printer",
+      "version": "0.0.3",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://registry.npmjs.org/@reason-native/file-context-printer/-/file-context-printer-0.0.3.tgz#sha1:b92eec7b10107ccb27528f9eea9bb51252bca491"
+        ]
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.7.1004@d41d8cd9", "@reason-native/pastel@0.2.3@d41d8cd9",
+        "@opam/re@opam:1.9.0@d4d5e13d", "@opam/dune@opam:1.11.4@a7ccb7ae",
+        "@esy-ocaml/reason@3.5.2@d41d8cd9"
       ],
       "devDependencies": []
     },
@@ -247,6 +286,34 @@
         "@esy-ocaml/substs@0.0.1@d41d8cd9"
       ],
       "devDependencies": [ "ocaml@4.7.1004@d41d8cd9" ]
+    },
+    "@opam/tyxml@opam:4.3.0@c1da25f1": {
+      "id": "@opam/tyxml@opam:4.3.0@c1da25f1",
+      "name": "@opam/tyxml",
+      "version": "opam:4.3.0",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/md5/fd/fd834a567f813bf447cab5f4c3a723e2#md5:fd834a567f813bf447cab5f4c3a723e2",
+          "archive:https://github.com/ocsigen/tyxml/releases/download/4.3.0/tyxml-4.3.0.tbz#md5:fd834a567f813bf447cab5f4c3a723e2"
+        ],
+        "opam": {
+          "name": "tyxml",
+          "version": "4.3.0",
+          "path": "esy.lock/opam/tyxml.4.3.0"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.7.1004@d41d8cd9", "@opam/uutf@opam:1.0.2@4440868f",
+        "@opam/seq@opam:base@d8d7de1d", "@opam/re@opam:1.9.0@d4d5e13d",
+        "@opam/dune@opam:1.11.4@a7ccb7ae", "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.7.1004@d41d8cd9", "@opam/uutf@opam:1.0.2@4440868f",
+        "@opam/seq@opam:base@d8d7de1d", "@opam/re@opam:1.9.0@d4d5e13d",
+        "@opam/dune@opam:1.11.4@a7ccb7ae"
+      ]
     },
     "@opam/topkg@opam:1.0.1@a42c631e": {
       "id": "@opam/topkg@opam:1.0.1@a42c631e",
@@ -474,6 +541,34 @@
       "devDependencies": [
         "ocaml@4.7.1004@d41d8cd9", "@opam/seq@opam:base@d8d7de1d",
         "@opam/dune@opam:1.11.4@a7ccb7ae"
+      ]
+    },
+    "@opam/ptime@opam:0.8.5@0051d642": {
+      "id": "@opam/ptime@opam:0.8.5@0051d642",
+      "name": "@opam/ptime",
+      "version": "opam:0.8.5",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/md5/4d/4d48055d623ecf2db792439b3e96a520#md5:4d48055d623ecf2db792439b3e96a520",
+          "archive:https://erratique.ch/software/ptime/releases/ptime-0.8.5.tbz#md5:4d48055d623ecf2db792439b3e96a520"
+        ],
+        "opam": {
+          "name": "ptime",
+          "version": "0.8.5",
+          "path": "esy.lock/opam/ptime.0.8.5"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "ocaml@4.7.1004@d41d8cd9", "@opam/topkg@opam:1.0.1@a42c631e",
+        "@opam/result@opam:1.4@dc720aef",
+        "@opam/ocamlfind@opam:1.8.1@ff07b0f9",
+        "@opam/ocamlbuild@opam:0.14.0@6ac75d03",
+        "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "ocaml@4.7.1004@d41d8cd9", "@opam/result@opam:1.4@dc720aef"
       ]
     },
     "@opam/ppxlib@opam:0.10.0@011ee889": {
@@ -1121,6 +1216,32 @@
       ],
       "devDependencies": [
         "ocaml@4.7.1004@d41d8cd9", "@opam/markup@opam:0.8.2@87975241",
+        "@opam/dune@opam:1.11.4@a7ccb7ae"
+      ]
+    },
+    "@opam/junit@opam:2.0.1@1b4d302c": {
+      "id": "@opam/junit@opam:2.0.1@1b4d302c",
+      "name": "@opam/junit",
+      "version": "opam:2.0.1",
+      "source": {
+        "type": "install",
+        "source": [
+          "archive:https://opam.ocaml.org/cache/md5/40/40224fb3d4f5e47dc5ff4605587d383b#md5:40224fb3d4f5e47dc5ff4605587d383b",
+          "archive:https://github.com/Khady/ocaml-junit/releases/download/2.0.1/junit-2.0.1.tbz#md5:40224fb3d4f5e47dc5ff4605587d383b"
+        ],
+        "opam": {
+          "name": "junit",
+          "version": "2.0.1",
+          "path": "esy.lock/opam/junit.2.0.1"
+        }
+      },
+      "overrides": [],
+      "dependencies": [
+        "@opam/tyxml@opam:4.3.0@c1da25f1", "@opam/ptime@opam:0.8.5@0051d642",
+        "@opam/dune@opam:1.11.4@a7ccb7ae", "@esy-ocaml/substs@0.0.1@d41d8cd9"
+      ],
+      "devDependencies": [
+        "@opam/tyxml@opam:4.3.0@c1da25f1", "@opam/ptime@opam:0.8.5@0051d642",
         "@opam/dune@opam:1.11.4@a7ccb7ae"
       ]
     },

@@ -13,14 +13,23 @@
         "lambdasoup", "cohttp", "cohttp-lwt", "cohttp-lwt-unix", "lwt",
         "lwt_ppx", "pastel.lib", "console.lib", "yojson"
       ],
-      "includeSubdirs":"unqualified",
+      "includeSubdirs": "unqualified",
       "preprocess": [ "pps", "lwt_ppx" ],
       "main": "Index",
       "name": "App.exe"
+    },
+    "test": {
+      "require":[
+        "rely.lib"
+      ],
+      "name": "AppTests.exe",
+      "main": "RunTests"
     }
   },
-  "scripts": {
-    "pesy": "bash -c 'env PESY_MODE=update pesy'"
+  "scripts": { 
+    "pesy": "bash -c 'env PESY_MODE=update pesy'",
+    "start": "esy x App.exe",
+    "tests": "esy x AppTests.exe"
   },
   "dependencies": {
     "@esy-ocaml/reason": "*",
@@ -34,6 +43,7 @@
     "@opam/yojson": "1.7.0",
     "@reason-native/console": "^0.1.0",
     "@reason-native/pastel": "^0.2.3",
+    "@reason-native/rely": "^3.1.0",
     "ocaml": "~4.8.1000"
   },
   "devDependencies": {
