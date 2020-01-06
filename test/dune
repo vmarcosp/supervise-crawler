@@ -1,0 +1,6 @@
+(executable
+   (name AppTests)  
+   (public_name app-tests.exe) 
+   (libraries  alcotest )
+)
+(include_subdirs unqualified)

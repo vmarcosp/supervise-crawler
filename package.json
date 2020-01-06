@@ -4,27 +4,15 @@
   "description": "Supervise crawler",
   "esy": {
     "build": "refmterr dune build -p supervise-crawler",
-    "buildDev": "pesy",
-    "release": { "releasedBinaries": [ "App.exe" ] }
+    "release": { "releasedBinaries": [ "app.exe" ] }
   },
-  "buildDirs": {
-    "src": {
-      "require": [
-        "lambdasoup", "cohttp", "cohttp-lwt", "cohttp-lwt-unix", "lwt",
-        "lwt_ppx", "pastel.lib", "console.lib", "yojson"
-      ],
-      "includeSubdirs": "unqualified",
-      "preprocess": [ "pps", "lwt_ppx" ],
-      "main": "Index",
-      "name": "App.exe"
-    }
-  },
-  "scripts": { 
-    "pesy": "bash -c 'env PESY_MODE=update pesy'",
-    "start": "esy x App.exe"
+  "buildDirs": {},
+  "scripts": {
+    "start": "esy x app"
   },
   "dependencies": {
     "@esy-ocaml/reason": "*",
+    "@opam/alcotest": "0.8.5",
     "@opam/base": "v0.13.0",
     "@opam/cohttp": "*",
     "@opam/cohttp-lwt-unix": "*",

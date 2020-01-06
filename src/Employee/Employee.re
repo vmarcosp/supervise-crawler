@@ -38,24 +38,6 @@ let get_left_column = get_column(left_column_selector)
 
 let get_right_column = get_column(right_column_selector)
 
-let create_discounts = row => {
-  let value = row 
-    $$ "td" 
-    |> Soup.to_list
-
-  switch (value) {
-  | [code, description, reference, earning, discount] =>
-    `Assoc([
-      ("code", `String(get_value(code))),
-      ("description", `String(get_value(description))),
-      ("reference", `String(get_value(reference))),
-      ("earning", `String(get_value(earning))),
-      ("discount", `String(get_value(discount))),
-    ])
-  | _ => `Assoc([("", `String(""))])
-  }
-}
-
 let create_employee = link => {
   let%lwt (response, body) = HttpUtils.make_request(link)
     
@@ -63,11 +45,8 @@ let create_employee = link => {
 
   let soup = parsedBody|>parse
 
-  let discounts = soup
-    $$ ".tableDados > tbody > tr" 
-    |> Soup.to_list
-    |> rows => List.map(rows, create_discounts)
-  
+  let discounts = Discounts.of_rows(soup)
+   
   let left_column = get_left_column(soup)
   let right_column = get_right_column(soup)
 
