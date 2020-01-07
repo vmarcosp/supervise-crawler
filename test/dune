@@ -1,6 +1,6 @@
 (executable
    (name AppTests)  
    (public_name app-tests.exe) 
-   (libraries  alcotest )
+   (libraries  alcotest supervise-crawler.utils)
 )
 (include_subdirs unqualified)

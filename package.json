@@ -6,7 +6,13 @@
     "build": "refmterr dune build -p supervise-crawler",
     "release": { "releasedBinaries": [ "app.exe" ] }
   },
-  "buildDirs": {},
+  "buildDirs": {
+    "utils": {
+      "namespace": "Utils",
+      "name": "supervise-crawler.utils",
+      "require": ["base"]
+    }
+  },
   "scripts": {
     "start": "esy x app"
   },

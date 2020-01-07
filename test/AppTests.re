@@ -1,1 +1,1 @@
-print_endline("Hello!");
+CleanfyTest.run()
