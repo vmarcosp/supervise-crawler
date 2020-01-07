@@ -9,16 +9,8 @@ let clean_value_tests = {
       clean_value(" something something something ")    
     ));
 
-  let test_invalid_characters = () => Alcotest.(check(
-    string,
-    "should remove invalid chars",
-    "something",
-    clean_value("something []2[2")
-  ));
-
   ("Cleanfy.clean_value", [
-      Alcotest.test_case("With spaces", `Quick, test_trim),
-      Alcotest.test_case("With invalid chars", `Quick, test_invalid_characters)
+      Alcotest.test_case("With spaces", `Quick, test_trim)
   ])
 }
 

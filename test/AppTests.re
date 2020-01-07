@@ -1,1 +1,2 @@
+UrlTest.run()
 CleanfyTest.run()
