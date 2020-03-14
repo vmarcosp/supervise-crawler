@@ -1,2 +1,0 @@
-UrlTest.run()
-CleanfyTest.run()

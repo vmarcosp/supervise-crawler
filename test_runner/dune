@@ -1,0 +1,2 @@
+(executable (name test_runner_app) (modules (:standard))
+    (public_name test-runner.exe) (libraries supervise-crawler.test))

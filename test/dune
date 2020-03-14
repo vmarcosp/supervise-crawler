@@ -1,6 +1,3 @@
-(executable
-   (name AppTests)  
-   (public_name app-tests.exe) 
-   (libraries  alcotest supervise-crawler.utils)
-)
+(library (name App_test) (public_name supervise-crawler.test) (modules (:standard))
+    (libraries base rely.lib) (flags -open Base -linkall -g -w -9))
 (include_subdirs unqualified)
