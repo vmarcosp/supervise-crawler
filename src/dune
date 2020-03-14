@@ -1,7 +1,8 @@
-(executable
+(library
    (name App) 
-   (public_name app.exe)
+   (public_name supervise-crawler.app)
    (libraries  lambdasoup cohttp cohttp-lwt cohttp-lwt-unix lwt lwt_ppx pastel.lib console.lib yojson )
+   (flags -linkall -g -w -9)
    (preprocess ( pps lwt_ppx ))
 )
 (include_subdirs unqualified)

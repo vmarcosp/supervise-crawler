@@ -22,12 +22,14 @@ let start_crawler = response => {
   Employee.get_data(parsed_body)
 }
 
-let main = {
-  let url = Url.create_url(10, 2018)
-  
-  let%lwt (response,_) = HttpUtils.make_request(url)
+let execute = () => {
+  let main = {
+    let url = Url.create_url(10, 2018)
+    
+    let%lwt (response,_) = HttpUtils.make_request(url)
 
-  start_crawler(response)
+    start_crawler(response)
+  }
+
+  Lwt_main.run(main)
 }
-
-Lwt_main.run(main)

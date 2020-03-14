@@ -1,0 +1,6 @@
+(executable
+   (name Main) 
+   (public_name main.exe) (modules (:standard))
+   (libraries  supervise-crawler.app)
+)
+(include_subdirs unqualified)
