@@ -13,12 +13,13 @@ let to_href_list = list =>
       |> Url.with_suffix
   )
 
-let get_value = node => leaf_text(node) 
+let get_value = node => leaf_text(node)
   @?> "" 
   |> Stdlib.String.trim
 
 let field_of_node = item => {
-  let node = item $$ "td" 
+  let node = item 
+    $$ "td" 
     |> Soup.to_list
 
   switch (node) {
@@ -29,10 +30,11 @@ let field_of_node = item => {
 
 let nodes_to_field = items => List.map(items, field_of_node)
 
-let get_column = (selector, node) =>
-  node $$ selector 
-  |> Soup.to_list 
-  |> nodes_to_field
+let get_column = (selector, node) =>  
+  node 
+    $$ selector 
+    |> Soup.to_list 
+    |> nodes_to_field
 
 let get_left_column = get_column(left_column_selector)
 
@@ -40,13 +42,11 @@ let get_right_column = get_column(right_column_selector)
 
 let create_employee = link => {
   let%lwt (response, body) = HttpUtils.make_request(link)
-    
   let%lwt parsedBody = HttpUtils.body_to_string(body)
 
   let soup = parsedBody|>parse
 
   let discounts = Discounts.of_rows(soup)
-   
   let left_column = get_left_column(soup)
   let right_column = get_right_column(soup)
 
